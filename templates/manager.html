@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/journal/bootstrap.min.css"
+    />
+</head>
+<frameset rows="9%,*">
+   <frame src="{{url_for('static',filename='managertop.html')}}" noresize="noresize" name="frame4">
+    <frameset cols="13%,*">
+        <frame src="{{url_for('static',filename='managerleft.html')}}" noresize="noresize" name="frame5">
+        <frame src="{{url_for('static',filename='totalWaste.html')}}" noresize="noresize" name="frame6">
+    </frameset>
+</frameset>
+</html>
