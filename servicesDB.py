@@ -21,10 +21,10 @@ class servicesDB:
         conn.close()
         return rows
 
-    def addWaste(self,quan):
+    def addWaste(self,quan,food):
         t = ((str(dt.today())).split(" ")[0]).split('-')
         time = t[1]+'/'+t[2]+'/'+t[0]
-        query = "INSERT INTO WASTE VALUES('%s','%s')"%(quan,time)
+        query = "INSERT INTO WASTE VALUES('%s','%s','%s')"%(quan,food,time)
         conn = sqlite3.connect('database.db')
         print(query)
         conn.execute(query)

@@ -17,8 +17,8 @@ def studentlogin():
 def addwaste():
     if request.method == "POST":
         quant = request.form['quant']
-        conn.addWaste(quant)
-        return "Waste added please go to /getwaste"
+        food = request.form['food']
+        conn.addWaste(quant,food)
     return render_template('foodWasteDetail.html')
 
 @app.route('/getwaste')
@@ -28,7 +28,7 @@ def getwaste():
     outs = 0
     print(resp)
     for i in resp:
-        out += "Total waste on date %s is %s Kg's<br>"%(i[1],i[0])
+        out += "Total waste of %s on date %s is %s Kg's<br>"%(i[1],i[2],i[0])
         outs += int(i[0])
     out += "--------------------------------------------------------<br>"
     out += "Total waste on date is %s Kg's"%(str(outs))
