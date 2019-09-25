@@ -63,8 +63,8 @@ def login():
         if(len(resp)>0):
             data = resp[0]
             if(data[-1]=='student'):
-                return redirect(url_for('getwaste'))
-            return redirect(url_for('addwaste'))
+                return redirect(url_for('studentlogin'))
+            return redirect(url_for('manager'))
     return render_template('login.html')
 
 @app.route('/signup',methods=['POST','GET'])
