@@ -21,6 +21,21 @@ def addwaste():
         conn.addWaste(quant,food)
     return render_template('foodWasteDetail.html')
 
+@app.route('/addfeed',methods=['POST','GET'])
+def addfeed():
+    if request.method == "POST":
+        data = request.form['data']
+        
+
+@app.route('/viewfeed')
+def viewfeed():
+    resp = conn.viewFeedback()
+    out = "<html><head><title>Feedbacks</title></head><body><center><table><tr><th>No.</th><th>Feedback</th></tr>"
+    for i in range(len(resp)):
+        out += "<tr><td>%d</td><td>%s</td></tr>"%(i+1,resp[i][0])
+    out += "</table></body></html>"
+    return out
+
 @app.route('/getwaste')
 def getwaste():
     resp = conn.getWaste()
