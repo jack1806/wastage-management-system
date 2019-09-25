@@ -11,7 +11,7 @@ def index():
 
 @app.route('/studentlogin')
 def studentlogin():
-    return render_template('studentlogin.html')
+    return render_template('studentportal.html')
 
 @app.route('/addwaste',methods=['POST','GET'])
 def addwaste():
@@ -25,7 +25,8 @@ def addwaste():
 def addfeed():
     if request.method == "POST":
         data = request.form['data']
-        
+        conn.addFeedback(data)
+    return render_template('studentportal.html')
 
 @app.route('/viewfeed')
 def viewfeed():
@@ -51,7 +52,7 @@ def getwaste():
 
 @app.route('/manager')
 def manager():
-    return render_template('manager.html')
+    return render_template('foodWasteDetail.html')
 
 @app.route('/login',methods=['POST','GET'])
 def login():
