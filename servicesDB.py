@@ -46,7 +46,26 @@ class servicesDB:
         conn.execute(query)
         conn.commit()
         print("Success")
+
+    def putAttend(self,pre,total):
+        t = ((str(dt.today())).split(" ")[0]).split('-')
+        time = t[1]+'/'+t[2]+'/'+t[0]
+        query = "INSERT INTO ATTEND VALUES('%s','%s','%s')"%(pre,total,time)
+        conn = sqlite3.connect('database.db')
+        print(query)
+        conn.execute(query)
+        conn.commit()
+        print("Added")
     
+    def getAttend(self):
+        query = "SELECT * FROM ATTEND"
+        conn = sqlite3.connect('database.db')
+        csr = conn.cursor()
+        csr.execute(query)
+        rows = csr.fetchall()
+        conn.close()
+        return rows
+
     def getWaste(self):
         query = "SELECT * FROM WASTE"
         conn = sqlite3.connect('database.db')

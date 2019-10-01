@@ -21,6 +21,14 @@ def addwaste():
         conn.addWaste(quant,food)
     return render_template('foodWasteDetail.html')
 
+@app.route('/postAttend',method=['POST','GET'])
+def postAttend():
+    if request.method == "POST":
+        present = request.form['present']
+        total = request.form['total']
+        conn.putAttend(present,total)
+    return render_template('foodWasteDetail')
+
 @app.route('/addfeed',methods=['POST','GET'])
 def addfeed():
     if request.method == "POST":
