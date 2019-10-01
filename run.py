@@ -27,7 +27,18 @@ def postAttend():
         present = request.form['present']
         total = request.form['total']
         conn.putAttend(present,total)
-    return render_template('foodWasteDetail')
+    return render_template('foodWasteDetail.html')
+
+@app.route('/getAttend')
+def getAttend():
+    resp = conn.getAttend()
+    out = ""
+    outs = 0
+    print(resp)
+    for i in resp:
+        out += "%s / %s present on %s<br>"%(i[0],i[1],i[2])
+    out += "--------------------------------------------------------<br>"
+    return out
 
 @app.route('/addfeed',methods=['POST','GET'])
 def addfeed():
